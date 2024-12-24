@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcard System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <!-- Trang chính -->
+      <div class="container" id="main-page">
+        <h1>Học Lặp Lại Ngắt Quãng</h1>
+        <button id="reset-button" onclick="resetApplication()">Reset</button>
+
+        <input type="text" id="vocab-input" placeholder="Nhập từ vựng..." />
+        <input
+          type="text"
+          id="meaning-input"
+          placeholder="Nhập nghĩa từ vựng..."
+        />
+        <button onclick="addVocabulary()">Thêm từ vựng</button>
+
+        <div class="columns">
+          <div class="column" id="new-vocab">
+            <h2>Mới học</h2>
+            <p id="new-count">0 từ</p>
+            <button onclick="openFlashcard('new')">Xem Flashcard</button>
+          </div>
+          <div class="column" id="learning-vocab">
+            <h2>Đang học</h2>
+            <p id="learning-count">0 từ</p>
+            <button onclick="openFlashcard('learning')">Xem Flashcard</button>
+          </div>
+          <div class="column" id="learned-vocab">
+            <h2>Đã học</h2>
+            <p id="learned-count">0 từ</p>
+            <button onclick="viewLearnedWords()">Xem danh sách</button>
+            <a href="matching.html"
+              ><button class="play">Chơi Matching</button></a
+            >
+            <a href="scramble.html"
+              ><button class="play">Luyện viết từ xáo trộn</button></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Trang danh sách đã học -->
+      <div class="container" id="learned-page" style="display: none">
+        <h1>Danh sách từ đã học</h1>
+        <ul id="learned-list"></ul>
+        <button class="back-button" onclick="goBack()">Quay lại</button>
+      </div>
+
+      <!-- Nút xem thống kê trên giao diện chính -->
+      <button onclick="showStatistics()">Xem thống kê</button>
+
+      <!-- Trang hiển thị thống kê -->
+      <div id="stats-page" style="display: none">
+        <button onclick="goBack()">Quay lại</button>
+        <canvas id="progressChart" width="400" height="400"></canvas>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
